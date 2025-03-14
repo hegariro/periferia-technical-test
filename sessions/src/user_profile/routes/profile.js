@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const authorizationMiddleware = require('../../init_session/middleware/validateAuthorizationHeader');
+const authorizationMiddleware = require('../../session/middleware/validateAuthorizationHeader');
 const JwtService = require('../../shared/services/jwtService');
 const prismaService = require('../../shared/services/prismaService');
 const UserProfileController = require('../controllers/userProfileController');

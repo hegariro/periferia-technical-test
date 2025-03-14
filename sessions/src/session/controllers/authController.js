@@ -27,7 +27,7 @@ class AuthController {
             const user = await this.prisma.userpr.create({
                 data: { email, password: hashedPassword, name }
             });
-            res.status(201).json(user);
+            res.status(201).json({ user });
         } catch (error) {
             console.error('Error detallado:', error);
             res.status(500).json({ error: error.message });

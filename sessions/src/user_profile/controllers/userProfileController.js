@@ -11,11 +11,12 @@ class UserProfileController {
                 where: { id: userId }
             });
             if (!profile) {
-                res.status(404).json({ errorMessage: 'Perfil no encontrado' });
+                res.status(404).json({ errorMessage: 'Profile not found' });
             }
             res.status(200).json({ profile });
         } catch (error) {
-            res.status(500).json({ error: "Error al iniciar sesión" });
+            console.error('Details errors: ', error);
+            res.status(500).json({ error: 'Error, session not inicialized' });
         }
     }
 
@@ -26,7 +27,7 @@ class UserProfileController {
             const profile = await this.prisma.profilepr.create({
                 data: { id, nickname, profileImage }
             });
-            res.status(201).json(profile);
+            res.status(201).json({ profile });
         } catch (error) {
             console.error('Error detallado:', error);
             res.status(500).json({ error: error.message });
