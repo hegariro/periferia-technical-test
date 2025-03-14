@@ -5,7 +5,7 @@ FROM node:20.17.0-alpine
 WORKDIR /app
 
 # Copiar package.json y prisma
-COPY package.json .env server.js ./
+COPY package*.json .env server.js ./
 COPY prisma ./prisma/
 COPY src ./src/
 

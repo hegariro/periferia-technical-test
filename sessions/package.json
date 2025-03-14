@@ -4,7 +4,8 @@
   "description": "Prueba técnica",
   "main": "server.js",
   "scripts": {
-    "start": "node server.js"
+    "start": "node server.js",
+    "seed": "node ./test/seed/userSeed.js && node ./test/seed/profileSeed.js"
   },
   "author": "Heiner Rios Rodriguez (heinerr.rodriguez@gmail.com)",
   "license": "ISC",

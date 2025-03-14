@@ -2,7 +2,6 @@ const bcrypt = require('bcryptjs');
 
 class AuthController {
     constructor(prismaService, jwtService) {
-        console.log({prismaService});
         this.prisma = prismaService.prisma;
         this.jwtService = jwtService;
     }
@@ -10,10 +9,6 @@ class AuthController {
     async login(req, res) {
         try {
             const { email, password } = req.body;
-            console.log("**********************************************");
-            console.log(req.body);
-            console.log("**********************************************");
-            console.log({ email, password });
             const user = await this.prisma.userpr.findUnique({ where: { email } });
             if (!user || !(await bcrypt.compare(password, user.password))) {
                 return res.status(401).json({ error: "Credenciales inválidas" });
@@ -36,6 +31,16 @@ class AuthController {
         } catch (error) {
             console.error('Error detallado:', error);
             res.status(500).json({ error: error.message });
+        }
+    }
+
+    async logout(req, res) {
+        try {
+            this.prisma.close();
+            res.status(204);
+        } catch (error) {
+            console.error('Error detallado:', error);
+            res.status(400).json({ error: error.message });
         }
     }
 }
