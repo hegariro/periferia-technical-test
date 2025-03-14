@@ -19,6 +19,7 @@ function validateAuthorizationHeader(req, res, next) {
 
     // Adjuntar los datos decodificados del token al objeto `req`
     req.user = decoded;
+    console.info('Token validado para usuario ', req.user.userId);
 
     // Continuar con la siguiente función middleware o ruta
     next();
