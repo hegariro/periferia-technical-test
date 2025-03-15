@@ -36,7 +36,7 @@ class AuthController {
 
     async logout(req, res) {
         try {
-            this.prisma.close();
+            this.prisma.$disconnect();
             res.status(204);
         } catch (error) {
             console.error('Error detallado:', error);

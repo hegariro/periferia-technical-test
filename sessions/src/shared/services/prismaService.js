@@ -21,10 +21,6 @@ class PrismaService {
           console.error('Error al conectar:', error.message);
         }
     }
-
-    async close() {
-        await this.prisma.$disconnect();
-    }
 }
 
 module.exports = new PrismaService();

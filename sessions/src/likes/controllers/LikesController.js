@@ -7,14 +7,18 @@ class LikesController {
     async getLikes(req, res) {
         try {
             const { userId } = req.user;
-            const publicationLikes = await this.prisma.likespr.groupBy({
+            const answerLikes = await this.prisma.likespr.groupBy({
                 by: ['publication'],
                 _count: { id: true },
                 orderBy: { publication: 'asc' },
             });
-            if (!publicationLikes && Array.isArray(publicationLikes) && !publicationLikes.length) {
+            if (!answerLikes && Array.isArray(answerLikes) && !answerLikes.length) {
                 res.status(404).json({ errorMessage: 'Publications without likes' });
             }
+            const publicationLikes = answerLikes.map((item) => ({
+                publicationId: item.publication,
+                likesCount: item._count.id,
+            }));
             res.status(200).json({ publicationLikes });
         } catch (error) {
             console.error('Details errors: ', error);
@@ -25,15 +29,19 @@ class LikesController {
     async getLikesByUser(req, res) {
         try {
             const { userId } = req.user;
-            const publicationLikes = await this.prisma.likespr.groupBy({
+            const answerLikes = await this.prisma.likespr.groupBy({
                 by: ['publication'],
                 _count: { id: true },
                 orderBy: { publication: 'asc' },
                 where: { user: userId },
             });
-            if (!publicationLikes && Array.isArray(publicationLikes) && !publicationLikes.length) {
+            if (!answerLikes && Array.isArray(answerLikes) && !answerLikes.length) {
                 res.status(404).json({ errorMessage: 'Publications without likes' });
             }
+            const publicationLikes = answerLikes.map((item) => ({
+                publicationId: item.publication,
+                likesCount: item._count.id,
+            }));
             res.status(200).json({ publicationLikes });
         } catch (error) {
             console.error('Details errors: ', error);
