@@ -103,19 +103,19 @@ router.post('/login', authController.login.bind(authController));
  *             schema:
  *               type: object
  *               properties:
- *                 id
+ *                 id:
  *                   type: int
  *                   description: Identificador único del usuario.
- *                 email
+ *                 email:
  *                   type: string
  *                   description: Correo electrónico.
- *                 password
+ *                 password:
  *                   type: string
  *                   description: Contraseña hasheada.
- *                 name
+ *                 name:
  *                   type: string
  *                   description: Nombre registrado.
- *                 createdAt
+ *                 createdAt:
  *                   type: string
  *                   format: date-time
  *                   description: Fecha de creación del registro.

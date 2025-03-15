@@ -1,6 +1,6 @@
 const express = require('express');
 const mainRoutes = require('./src/routes.js');
-const swaggerSetup = require('./swagger'); // Importa la configuración de Swagger
+const swaggerSetup = require('./config/swagger/swagger'); // Importa la configuración de Swagger
 
 const app = express();
 app.use(express.json());
