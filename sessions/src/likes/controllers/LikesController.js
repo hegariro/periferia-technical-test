@@ -6,10 +6,10 @@ class LikesController {
 
     async getLikes(req, res) {
         try {
-            const { userId } = req.user;
             const answerLikes = await this.prisma.likespr.groupBy({
                 by: ['publication'],
                 _count: { id: true },
+                take: 100, 
                 orderBy: { publication: 'asc' },
             });
             if (!answerLikes && Array.isArray(answerLikes) && !answerLikes.length) {

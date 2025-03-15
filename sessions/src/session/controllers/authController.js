@@ -14,7 +14,7 @@ class AuthController {
                 return res.status(401).json({ error: "Credenciales inválidas" });
             }
             const token = await this.jwtService.generateToken({ userId: user.id });
-            res.json({ token });
+            res.status(200).json({ token });
         } catch (error) {
             res.status(500).json({ error: "Error al iniciar sesión" });
         }
