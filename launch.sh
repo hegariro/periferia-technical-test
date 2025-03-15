@@ -1,2 +1,5 @@
 #!/bin/bash
-docker compose up --build -d
+docker compose down -v
+
+docker compose up db -d
+docker compose up backend --build -d

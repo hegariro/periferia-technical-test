@@ -7,6 +7,7 @@ WORKDIR /app
 # Copiar package.json y prisma
 COPY package*.json .env server.js ./
 COPY prisma ./prisma/
+COPY config ./config/
 COPY src ./src/
 
 # Instalar dependencias

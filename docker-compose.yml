@@ -14,9 +14,9 @@ services:
       POSTGRES_USER: ${POSTGRES_USER}
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
 
-  sessions:
-    container_name: periferia_sessions
-    build: ./sessions
+  backend:
+    container_name: periferia_backend
+    build: ./backend
     ports:
       - "4000:4000"
     env_file: .env
@@ -34,7 +34,7 @@ services:
     ports:
       - "3000:3000"
     depends_on:
-      - sessions
+      - backend
     networks:
       - app-network
     environment:
