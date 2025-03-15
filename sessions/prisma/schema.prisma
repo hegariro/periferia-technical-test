@@ -32,7 +32,7 @@ model profilepr {
 }
 
 model publicationpr {
-  id        Int @id @default(autoincrement())
+  id        Int      @id @default(autoincrement())
   title     String
   publisher Int
   content   String

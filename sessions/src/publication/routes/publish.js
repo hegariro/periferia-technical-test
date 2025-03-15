@@ -9,8 +9,9 @@ const jwtService = new JwtService();
 
 const publishController = new PublishController(prismaService);
 
-router.get('/', authorizationMiddleware, publishController.getAllPublications.bind(publishController));
+router.get('/', authorizationMiddleware, publishController.getAllPublicationsByUser.bind(publishController));
 router.post('/', authorizationMiddleware, publishController.setPublication.bind(publishController));
-router.get('/:id', authorizationMiddleware, publishController.getPublicationById.bind(publishController));
+router.get('/landing', authorizationMiddleware, publishController.getAllPublications.bind(publishController));
+router.get('/:id(\\d+)', authorizationMiddleware, publishController.getPublicationById.bind(publishController));
 
 module.exports = router;
