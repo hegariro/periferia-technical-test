@@ -1,21 +1,34 @@
 import { useAppDispatch, useAppSelector } from '../app/hooks';
+import { useNavigate } from 'react-router-dom';
 import { Form } from '../components/Form/Form';
 import { Input } from '../components/Form/Input';
-import { setName, setEmail, setPassword, setConfirmPassword } from '../features/auth/authSlice';
+import { setName, setEmail, setPassword, setConfirmPassword, setUserId, resetForm } from '../features/auth/authSlice';
 import { selectName, selectEmail, selectPassword, selectConfirmPassword } from '../features/auth/authSelectors';
+import { registerUser } from '../app/api/authBackend';
 
 export const SignUpPage = () => {
     const dispatch = useAppDispatch();
+    const navigate = useNavigate();
     
     const name = useAppSelector(selectName);
     const email = useAppSelector(selectEmail);
     const password = useAppSelector(selectPassword);
     const confirmPassword = useAppSelector(selectConfirmPassword);
 
-    const handleSubmit = (e: React.FormEvent) => {
+    const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
-        // Lógica de registro usando los valores del estado Redux
-        console.log({ name, email, password, confirmPassword });
+
+        if (password !== confirmPassword) {
+            dispatch(resetForm());
+            alert('Las contraseñas no coinciden');
+            return;
+        }
+
+        const response = await registerUser({ name, email, password });
+        console.log({ response });
+        const { id } = response;
+        if (id) dispatch(setUserId(id));
+        navigate('/', { replace: true });
     };
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
