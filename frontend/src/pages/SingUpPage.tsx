@@ -2,8 +2,8 @@ import { useAppDispatch, useAppSelector } from '../app/hooks';
 import { useNavigate } from 'react-router-dom';
 import { Form } from '../components/Form/Form';
 import { Input } from '../components/Form/Input';
-import { setName, setEmail, setPassword, setConfirmPassword, setUserId, resetForm } from '../features/auth/authSlice';
-import { selectName, selectEmail, selectPassword, selectConfirmPassword } from '../features/auth/authSelectors';
+import { setName, setEmail, setPassword, setConfirmPassword, resetForm } from '../features/register/registerSlice';
+import { selectName, selectEmail, selectPassword, selectConfirmPassword } from '../features/register/registerSelectors';
 import { registerUser } from '../app/api/authBackend';
 
 export const SignUpPage = () => {
@@ -23,11 +23,14 @@ export const SignUpPage = () => {
             alert('Las contraseñas no coinciden');
             return;
         }
-
+        
         const response = await registerUser({ name, email, password });
-        console.log({ response });
-        const { id } = response;
-        if (id) dispatch(setUserId(id));
+        const { error } = response;
+        
+        if (error) alert(error);
+        console.log(response);
+        dispatch(resetForm());
+
         navigate('/', { replace: true });
     };
 

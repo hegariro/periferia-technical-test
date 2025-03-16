@@ -14,7 +14,8 @@ class AuthController {
                 return res.status(401).json({ error: "Credenciales inválidas" });
             }
             const token = await this.jwtService.generateToken({ userId: user.id });
-            res.status(200).json({ token });
+            const { id, name } = user;
+            res.status(200).json({ id, name, email, token });
         } catch (error) {
             res.status(500).json({ error: "Error al iniciar sesión" });
         }
@@ -36,7 +37,7 @@ class AuthController {
 
     async logout(req, res) {
         try {
-            this.prisma.$disconnect();
+            await this.prisma.$disconnect();
             res.status(204);
         } catch (error) {
             console.error('Error detallado:', error);
