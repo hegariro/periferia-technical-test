@@ -5,18 +5,15 @@ FROM node:20.17.0-alpine
 WORKDIR /app
 
 # Copiar package.json y prisma
-COPY package*.json .env server.js ./
-COPY prisma ./prisma/
-COPY config ./config/
+COPY package*.json index.html ./
+COPY public ./public/
 COPY src ./src/
 
-# Instalar dependencias
 RUN npm install
 
-# Copiar el resto de los archivos
 COPY . .
 
-EXPOSE 4000
+EXPOSE 5173
 
 # Comando para ejecutar la aplicación
-CMD ["sh", "launch.sh"]
+CMD ["npm", "run", "dev"]

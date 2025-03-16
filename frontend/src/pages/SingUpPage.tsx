@@ -40,43 +40,47 @@ export const SignUpPage = () => {
     };
 
     return (
-        <Form 
-            title="Registro de usuario" 
-            onSubmit={handleSubmit} 
-            buttonText="Crear cuenta"
-        >
-            <Input
-                type="text"
-                name="name"
-                label="Nombre completo"
-                value={name}
-                onChange={handleChange}
-                required
-            />
-            <Input
-                type="email"
-                name="email"
-                label="Correo electrónico"
-                value={email}
-                onChange={handleChange}
-                required
-            />
-            <Input
-                type="password"
-                name="password"
-                label="Contraseña"
-                value={password}
-                onChange={handleChange}
-                required
-            />
-            <Input
-                type="password"
-                name="confirmPassword"
-                label="Confirmar contraseña"
-                value={confirmPassword}
-                onChange={handleChange}
-                required
-            />
-        </Form>
+        <div className="max-w-md mx-auto mt-10">
+            <div className="bg-black rounded-lg shadow-md p-8">
+                <Form 
+                    title="Registro de usuario" 
+                    onSubmit={handleSubmit} 
+                    buttonText="Crear cuenta"
+                >
+                    <Input
+                        type="text"
+                        name="name"
+                        label="Nombre completo"
+                        value={name}
+                        onChange={handleChange}
+                        required
+                    />
+                    <Input
+                        type="email"
+                        name="email"
+                        label="Correo electrónico"
+                        value={email}
+                        onChange={handleChange}
+                        required
+                    />
+                    <Input
+                        type="password"
+                        name="password"
+                        label="Contraseña"
+                        value={password}
+                        onChange={handleChange}
+                        required
+                    />
+                    <Input
+                        type="password"
+                        name="confirmPassword"
+                        label="Confirmar contraseña"
+                        value={confirmPassword}
+                        onChange={handleChange}
+                        required
+                    />
+                </Form>
+            </div>
+        </div>
     );
 };
