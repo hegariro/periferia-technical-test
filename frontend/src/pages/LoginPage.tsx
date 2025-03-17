@@ -3,8 +3,8 @@ import { useNavigate } from 'react-router-dom';
 import { Form } from '../components/Form/Form';
 import { Input } from '../components/Form/Input';
 import { setEmail, setPassword, resetForm } from '../features/login/loginSlice';
-import { selectEmail, selectPassword } from '../features/login/loginSelectors';
 import { setUserId, setName, setEmail as setEmailAuth, setToken } from '../features/auth/authSlice';
+import { selectEmail, selectPassword } from '../features/login/loginSelectors';
 import { loginUser } from '../app/api/authBackend';
 
 export const LoginPage = () => {
