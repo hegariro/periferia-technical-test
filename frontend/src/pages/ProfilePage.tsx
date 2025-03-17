@@ -23,8 +23,6 @@ export const ProfilePage = () => {
                 const { nickname, profileImage } = response;
                 dispatch(setNickname(nickname));
                 dispatch(setProfileImage(profileImage));
-
-                console.log({nickname, profileImage});
                 if (!nickname || !profileImage) {
                     dispatch(resetAuthStorage());
                     const navigate = useNavigate();

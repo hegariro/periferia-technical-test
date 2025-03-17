@@ -17,7 +17,7 @@ export const getProfileData = async (token: string): Promise<ProfileResponse | n
                 Authorization: `Bearer ${token}`,
             },
         });
-        console.log('******************************* Response data', response);
+
         return response.data.profile;
     } catch (error) {
         if (axios.isAxiosError(error)) {

@@ -2,9 +2,9 @@ import { useAppDispatch, useAppSelector } from '../app/hooks';
 import { useNavigate } from 'react-router-dom';
 import { Form } from '../components/Form/Form';
 import { Input } from '../components/Form/Input';
+import { registerUser } from '../app/api/authBackend';
 import { setName, setEmail, setPassword, setConfirmPassword, resetForm } from '../features/register/registerSlice';
 import { selectName, selectEmail, selectPassword, selectConfirmPassword } from '../features/register/registerSelectors';
-import { registerUser } from '../app/api/authBackend';
 
 export const SignUpPage = () => {
     const dispatch = useAppDispatch();

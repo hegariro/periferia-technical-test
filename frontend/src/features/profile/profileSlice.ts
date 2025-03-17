@@ -27,5 +27,5 @@ const profileSlice = createSlice({
     }
 });
 
-export const { setNickname, setProfileImage, resetForm} = profileSlice.actions;
+export const { setNickname, setProfileImage, resetForm } = profileSlice.actions;
 export default profileSlice.reducer;
