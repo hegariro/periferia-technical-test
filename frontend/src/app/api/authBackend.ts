@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const api = axios.create({
-  baseURL: 'http://localhost:4000/api'
+  baseURL: 'http://localhost:4000/api/auth'
 });
 
 interface LoginData {
@@ -14,24 +14,23 @@ interface RegisterData extends LoginData {
 }
 
 interface LoginResponse {
-  id?: number;
-  name?: string;
-  email?: string;
-  token?: string;
-  error?: string;
+  id: number | null;
+  name: string | null;
+  email: string | null;
+  token: string | null;
+  error: string | null;
 }
 
 interface RegisterResponse {
-  id?: number;
-  email?: string;
-  password?: string;
-  name?: string;
-  error?: string;
+  id: number | null;
+  email: string | null;
+  name: string | null;
+  error: string | null;
 }
 
 export const loginUser = async (loginData: LoginData): Promise<LoginResponse> => {
   try {
-    const response = await api.post('/auth/login', loginData);
+    const response = await api.post('/login', loginData);
     return response.data;
   } catch (error) {
     if (axios.isAxiosError(error)) {
@@ -44,9 +43,9 @@ export const loginUser = async (loginData: LoginData): Promise<LoginResponse> =>
 
 export const registerUser = async (registerData: RegisterData): Promise<RegisterResponse> => {
   try {
-    const response = await api.post('/auth/register', registerData);
-    const { id, email, password, name } = response.data;
-    return { id, email, password, name };
+    const response = await api.post('/register', registerData);
+    const { id, email, name, error } = response.data;
+    return { id, email, name, error };
   } catch (error) {
     if (axios.isAxiosError(error)) {
       throw new Error(`Error al registrar usuario: ${error.message}`);
