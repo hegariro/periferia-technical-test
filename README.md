@@ -14,6 +14,7 @@ Este proyecto sirve como evidencia tangible de mi capacidad para diseñar, imple
 
 - [Introducción](#introducción)
 - [Stack Tecnológico](#stack-tecnológico)
+- [Arquitectura](#arquitectura)
 - [Funcionalidades](#funcionalidades)
 - [Instalación](#instalación)
 - [Enlaces relevantes](#enlaces)
@@ -39,6 +40,15 @@ Este proyecto sirve como evidencia tangible de mi capacidad para diseñar, imple
 
 + ***Docker***: Contenerización de servicios.
 + ***Docker Compose***: Orquestación de microservicios (backend, frontend, base de datos).
+
+## Arquitectura
+
+### Arquitectura de Aplicaciones Modernas: Integrando Principios Clave
+
+La arquitectura de aplicaciones modernas combina patrones y técnicas que priorizan la claridad, mantenibilidad y escalabilidad. 
+***Screaming Architecture*** garantiza que la estructura del código refleje directamente el dominio del negocio, organizando carpetas y componentes en torno a entidades como _PerfilUsuario_ o _Publicación_, en lugar de frameworks técnicos. Esto se complementa con ***Clean Architecture***, que separa el sistema en capas (_entidades, casos de uso, interfaces_) para aislar la lógica de negocio de detalles externos como bases de datos o UIs. ***Dependency Injection*** facilita este desacoplamiento al permitir que las dependencias (_servicios, repositorios_) sean inyectadas, mejorando la testabilidad y reduciendo el acoplamiento rígido entre componentes. Finalmente, la ***Arquitectura Hexagonal*** (_Ports and Adapters_) profundiza esta independencia mediante puertos abstractos que definen cómo el núcleo interactúa con el exterior (_APIs, bases de datos_), permitiendo adaptadores intercambiables para distintos entornos.
+
+En el contexto del frontend, la arquitectura se centra en la separación de ***componentes***, donde cada componente encapsula su propia lógica y presentación, facilitando la reutilización y el mantenimiento. La separación del estado es crucial, utilizando herramientas como ***Redux*** para gestionar variables de estado de manera predecible y centralizada. Los llamados al backend se realizan mediante APIs bien definidas, manteniendo la capa de presentación desacoplada de la lógica de negocio. Además, las interfaces gráficas se diseñan para ser responsivas y accesibles, utilizando frameworks como React para crear componentes modulares y eficientes. Esta estructura permite una mejor organización del código, facilita la colaboración entre equipos y acelera el desarrollo, al tiempo que mantiene una alta cohesión y un bajo acoplamiento entre los diferentes módulos de la aplicación.
 
 ## Funcionalidades
 
